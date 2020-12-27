@@ -1,2 +1,3 @@
 salt.json
 node_modules/
+session-secret.json
