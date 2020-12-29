@@ -34,7 +34,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' },
-  store: store({ dbPath: './database.db' })
+  store: store({ dbPath: './apexForum.db' })
 }));
 
 // Add our own middleware for handling ACL (Access Control)

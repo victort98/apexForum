@@ -3,7 +3,7 @@ const Encrypt = require('./Encrypt');
 
 module.exports = class RestApi {
 
-  constructor(expressApp, urlPrefix = '/api/', pathToDb = './database.db') {
+  constructor(expressApp, urlPrefix = '/api/', pathToDb = './apexForum.db') {
 
     this.app = expressApp;
     this.db = sqlite3(pathToDb);
