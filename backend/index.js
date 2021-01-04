@@ -4,18 +4,14 @@ const store = require('better-express-store');
 
 const app = express();
 const RestApi = require('./RestApi');
-const ACL = require('./ACL');
-const ACLsettings = require('./ACLsettings');
+const ACL = require('./Middleware/ACL/ACL');
+const ACLsettings = require('./Middleware/ACL/ACLsettings');
 
-// Use Express static to serve static content
-// (frontend html, css, javascript)
 app.use(express.static('WWW'));
 
-// Make Express able to read the req.body
 app.use(express.json());
 
-// Prevent badly formatted JSON in request.body from causing errors
-// (Note: express middleware can take an extra parameter error)
+
 app.use((error, req, res, next) => {
   console.log("ERROR", error)
   if (error) {
@@ -27,8 +23,6 @@ app.use((error, req, res, next) => {
   }
 });
 
-// Add express-session as middleware to our express app
-// so that we can handle sessions
 app.use(session({
   secret: require('./session-secret.json'),
   resave: false,
@@ -37,13 +31,10 @@ app.use(session({
   store: store({ dbPath: './apexForum.db' })
 }));
 
-// Add our own middleware for handling ACL (Access Control)
-// important since we are looking at req.session in the ACL middleware
-// we must register it after registering the session middleware
 app.use(ACL(ACLsettings));
 
-// Create the REST api
+
 new RestApi(app);
 
-// Start the web server
+
 app.listen(3000, () => { console.log('Listening on port 3000') });
