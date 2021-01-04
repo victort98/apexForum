@@ -6,11 +6,11 @@ const login = (req, res) => {
   if (req.body.password) {
     req.body.password = Encrypt.multiEncrypt(req.body.password);
   }
-  let statement = this.db.prepare(`
+  let query = db.prepare(`
            SELECT * FROM users
            WHERE email = $email AND password = $password
         `);
-  let user = statement.get(req.body) || null;
+  let user = query.get(req.body) || null;
   if (user) {
     delete user.password;
     // store the logged in user in a session
