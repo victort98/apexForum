@@ -11,7 +11,6 @@ app.use(express.static('WWW'));
 
 app.use(express.json());
 
-
 app.use((error, req, res, next) => {
   console.log("ERROR", error)
   if (error) {

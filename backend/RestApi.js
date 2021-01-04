@@ -1,5 +1,5 @@
 const sqlite3 = require('better-sqlite3');
-const Encrypt = require('./Encrypt');
+const Encrypt = require('./Middleware/Encrypt');
 
 module.exports = class RestApi {
 
