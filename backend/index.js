@@ -2,14 +2,16 @@ const express = require('express');
 const session = require('express-session');
 const store = require('better-express-store');
 
-const app = express();
-const RestApi = require('./RestApi');
 const ACL = require('./Middleware/ACL/ACL');
 const ACLsettings = require('./Middleware/ACL/ACLsettings');
 
-app.use(express.static('WWW'));
+const authRoutes = require("./routes/authRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const topicRoutes = require("./routes/topicRoutes");
+const userRoutes = require("./routes/userRoutes");
 
-app.use(express.json());
+const app = express();
 
 app.use((error, req, res, next) => {
   console.log("ERROR", error)
@@ -30,10 +32,14 @@ app.use(session({
   store: store({ dbPath: './apexForum.db' })
 }));
 
+app.use(express.json());
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1/comments", commentRoutes);
+app.use("/api/v1/topics", topicRoutes);
+app.use("/api/v1/users", userRoutes);
+
 app.use(ACL(ACLsettings));
-
-
-new RestApi(app);
 
 
 app.listen(3000, () => { console.log('Listening on port 3000') });
