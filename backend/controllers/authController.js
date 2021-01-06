@@ -8,7 +8,7 @@ const login = (req, res) => {
   }
   let query = db.prepare(`
            SELECT * FROM users
-           WHERE email = $email AND password = $password
+           WHERE username = $username AND password = $password
         `);
   let user = query.get(req.body) || null;
   if (user) {

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
 import CategoryList from '../components/homePage/CategoryList'
+import LoginPage from '../pages/Login'
 
 
 Vue.use(VueRouter)
@@ -19,6 +20,11 @@ const routes = [
         },
         ],
     },
+    {
+        path: "/login",
+        name: "LoginPage",
+        component: LoginPage
+    }
 
 ]
 

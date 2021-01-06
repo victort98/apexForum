@@ -7,7 +7,7 @@ module.exports = class Encrypt {
   // the build in Node.js module crypto
   static encrypt(password) {
     return crypto
-      .createHmac('sha256', require('./salt.json'))
+      .createHmac('sha256', require('../salt.json'))
       .update(password)
       .digest('hex');
   }
