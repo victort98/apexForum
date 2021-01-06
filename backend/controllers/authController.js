@@ -7,9 +7,9 @@ const login = (req, res) => {
     req.body.password = Encrypt.multiEncrypt(req.body.password);
   }
   let query = db.prepare(`
-           SELECT * FROM users
-           WHERE username = $username AND password = $password
-        `);
+     SELECT * FROM users
+     WHERE username = $username AND password = $password
+  `);
   let user = query.get(req.body) || null;
   if (user) {
     delete user.password;

@@ -27,8 +27,6 @@ export default {
                 password: this.password,
             }
 
-            console.log(credentials)
-
             let user = await this.$store.dispatch("login", credentials);
 
             if(!user) {

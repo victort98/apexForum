@@ -12,6 +12,7 @@ const topicRoutes = require("./routes/topicRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
+app.use(express.json());
 
 app.use((error, req, res, next) => {
   console.log("ERROR", error)
@@ -32,7 +33,6 @@ app.use(session({
   store: store({ dbPath: './apexForum.db' })
 }));
 
-app.use(express.json());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/comments", commentRoutes);
