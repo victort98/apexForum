@@ -29,7 +29,7 @@ const registerAccount = (req, res) => {
     }
 
     let query = db.prepare(`
-        INSERT INTO users (email, username, password, userRole) VALUES ($email, $username, $password, $userRole)
+        INSERT INTO users (email, username, password) VALUES ($email, $username, $password)
     `);
 
     res.json(query.run(req.body));
