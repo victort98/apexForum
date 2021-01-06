@@ -10,11 +10,17 @@ import Header from './components/Header.vue'
 export default {
     name: 'app',
     methods: {
-
+        async fetchAllCategories() {
+        this.$store.dispatch("fetchAllCategories");
+    },
     },
     components: {
         Header,
     },
+
+    created() {
+        this.fetchAllCategories();
+    }
 }
 </script>
 
