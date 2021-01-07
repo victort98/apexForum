@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '../pages/HomePage'
 import CategoryList from '../components/homePage/CategoryList'
 import LoginPage from '../pages/Login'
+import TopicContent from '../components/homePage/TopicContent'
 
 
 Vue.use(VueRouter)
@@ -18,6 +19,11 @@ const routes = [
             name: "CategoryList",
             component: CategoryList,
         },
+        {
+            path: "/:topicId",
+            name: "TopicContent",
+            component: TopicContent
+        }
         ],
     },
     {

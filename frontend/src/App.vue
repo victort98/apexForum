@@ -11,8 +11,11 @@ export default {
     name: 'app',
     methods: {
         async fetchAllCategories() {
-        this.$store.dispatch("fetchAllCategories");
-    },
+            this.$store.dispatch("fetchAllCategories");
+        },
+        async fetchCurrentUser() {
+            this.$store.dispatch("fetchCurrentUser");
+        },
     },
     components: {
         Header,
@@ -20,6 +23,7 @@ export default {
 
     created() {
         this.fetchAllCategories();
+        this.fetchCurrentUser();
     }
 }
 </script>

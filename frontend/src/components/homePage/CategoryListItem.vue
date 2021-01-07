@@ -3,13 +3,30 @@
     <div class="category-list-item">
         <p class="title">{{ category.title }}</p>
     </div>
-    <div></div>
+    <div class="topics">
+        <topic-list
+            v-for="topic in topics"
+            :key="topic.id"
+            :topic="topic"
+            :categoryId="category.id"
+        />
     </div>
+</div>
 </template>
 
 <script>
+import TopicList from "./TopicList"
 export default {
     props: ['category'],
 
+    components: {
+        TopicList
+    },
+
+    computed: {
+        topics() {
+            return this.$store.getters["topicsByCategoryId"](this.category.id);
+        }
+    }
 }
 </script>

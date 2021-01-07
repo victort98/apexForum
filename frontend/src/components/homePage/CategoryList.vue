@@ -16,6 +16,16 @@ export default {
         categoryList() {
             return this.$store.state.categoryStore.categories
         }
+    },
+
+    methods: {
+        fetchAllTopics() {
+            this.$store.dispatch("fetchAllTopics");
+        }
+    },
+
+    created() {
+        this.fetchAllTopics();
     }
  
 }
