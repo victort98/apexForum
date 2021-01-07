@@ -25,14 +25,6 @@ export default {
     },
 
     methods: {
-
-        async getAllTopicsById() {
-            this.$store.dispatch("fetchAllTopicsByTopicId", this.topicId)
-        }
     },
-
-    created() {
-        this.getAllTopicsById();
-    }
 }
 </script>

@@ -20,7 +20,7 @@ const routes = [
             component: CategoryList,
         },
         {
-            path: "/:topicId",
+            path: "/:categoryId/:topicId",
             name: "TopicContent",
             component: TopicContent
         }
