@@ -13,7 +13,7 @@ export default {
 
     methods: {
       goToTopicContent() {
-        this.$router.push(`${this.topic.id}`)
+        this.$router.push(`${this.categoryId}/${this.topic.id}`)
       }
     },
 
