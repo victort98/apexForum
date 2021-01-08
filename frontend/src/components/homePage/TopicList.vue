@@ -1,9 +1,6 @@
 <template>
   <div class="topic">
-    <div class="topic-click" @click="goToTopicContent">
-      <div class="title">{{ topic.title }}</div>
-      <div class="username">{{ topic.username }}</div>
-    </div>
+    <router-link class="topic-name bold underline" :to="`${this.categoryId}/${this.topic.id}`">{{ topic.title }}</router-link>
   </div>
 </template>
 
@@ -12,9 +9,6 @@ export default {
     props: ["topic", "categoryId",],
 
     methods: {
-      goToTopicContent() {
-        this.$router.push(`${this.categoryId}/${this.topic.id}`)
-      }
     },
 
 

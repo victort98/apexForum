@@ -3,7 +3,7 @@ const topicController = require("../controllers/topicController");
 const router = express.Router();
 
 router.get("", topicController.getAllTopics);
-router.get("/:topicId", topicController.getTopicByTopicId);
-router.get("/:categoryId/:topicId", topicController.getAllTopicsByCategoryId);
+router.get("/:categoryId/:topicId", topicController.getTopicByTopicId);
+router.get("/:categoryId", topicController.getAllTopicsByCategoryId);
 
 module.exports = router;

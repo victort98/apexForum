@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    props: ["topic", "categoryId",],
+    props: ["topic"],
 
     methods: {
 
