@@ -37,7 +37,7 @@ const postNewTopic = (req, res) => {
     `);
 
     res.json(query.run(req.body));
-}
+};
 
 module.exports = {
     getAllTopics,
