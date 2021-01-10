@@ -35,6 +35,8 @@ const postNewTopic = (req, res) => {
     let query = db.prepare(`
         INSERT INTO topics (title, categoryId, locked, created_at, content, userId) VALUES ($title, $categoryId, $locked, $created_at, $content, $userId)
     `);
+
+    res.json(query.run(req.body));
 }
 
 module.exports = {
