@@ -1,5 +1,3 @@
-import { postNewTopic } from "../../../backend/controllers/topicController";
-
 export const topicStore = {
 
     state: {
@@ -47,6 +45,7 @@ export const topicStore = {
                 body: JSON.stringify(topic)
             });
             newTopic = await newTopic.json();
+            return newTopic.lastInsertRowid;
         }
     }
 }

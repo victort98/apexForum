@@ -26,26 +26,38 @@ export default {
         return {
             title: "",
             categoryId: 1,
+            locked: false,
+            created_at: Date.now(),
             options: [
                 { text: 'Game Updates', value: 1 },
                 { text: 'Pro Discussion', value: 2 },
                 { text: 'Tournaments', value: 3 },
             ],
             content: "",
+            userId: ""
         }
     },
 
+
     methods: {
-        
         async createTopic() {
+        let user = this.$store.state.userStore.isLoggedIn
+        if(!user){
+            console.log("You need to create an account to create a topic")
+        } else {
             let topic = {
                 title: this.title,
                 categoryId: this.categoryId,
+                locked: this.locked,
+                created_at: this.created_at,
                 content: this.content,
-                userId: this.userId
+                userId: user.id
             };
             this.$store.dispatch("postNewTopic", topic)
+            console.log(topic);
         }
-    }
+        },
+    },
+
 }
 </script>

@@ -28,9 +28,6 @@ const getAllTopicsByCategoryId = (req, res) => {
 };
 
 const postNewTopic = (req, res) => {
-    req.body.userId = req.session.user.id;
-    req.body.created_at = Date.now();
-    req.body.locked = false;
 
     let query = db.prepare(`
         INSERT INTO topics (title, categoryId, locked, created_at, content, userId) VALUES ($title, $categoryId, $locked, $created_at, $content, $userId)

@@ -10,10 +10,5 @@
 export default {
     props: ["topic"],
 
-    methods: {
-
-    },
-
-
 }
 </script>

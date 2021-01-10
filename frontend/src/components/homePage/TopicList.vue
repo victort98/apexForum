@@ -6,11 +6,7 @@
 
 <script>
 export default {
-    props: ["topic", "categoryId",],
-
-    methods: {
-    },
-
+    props: ["topic", "categoryId"]
 
 }
 </script>
