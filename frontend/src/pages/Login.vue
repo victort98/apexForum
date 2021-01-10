@@ -39,6 +39,13 @@ export default {
             this.password = "";
         }
     },
+
+    created() {
+        let user = this.$store.state.userStore.isLoggedIn
+        if(!user){
+            this.$router.push("/");
+        }
+    }
 }
 </script>
 

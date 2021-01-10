@@ -5,6 +5,8 @@
             <br>
             {{ topic.content }}
             <br>
+            {{ topic.username }}
+            <br>
             {{ topic.created_at }}
         </div>
     </div>

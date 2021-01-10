@@ -1,22 +1,17 @@
 
 <template>
-<div class="header">
-  <a class="home" href="#">Apex Forum</a>
+<div class="header-component">
+  <a class="home" href="/">Apex Forum</a>
   <div class="header-right">
-    <a class="active" href="#">Home</a>
-    <a href="#">test</a>
-    <a href="#">test</a>
+    <a href="/new-topic">Create topic</a>
+    <a v-if="user" href="/login">Login</a>
+    <a v-else href="/logout">logout</a>
   </div>
 </div>
 </template>
   
 <script>
-
 export default {
-    name: 'header',
-    components: {
-
-    },
 }
 
 </script>
@@ -31,13 +26,13 @@ body {
 
 
 
-.header {
+.header-component {
     overflow: hidden;
     background-color: rgb(36, 36, 36);
     padding: 15px 10px;
 }
 
-.header a {
+.header-component a {
     float: left;
     color: white;
     text-align: center;
@@ -48,12 +43,12 @@ body {
     line-height: 25px;
 }
 
-.header a.home {
+.header-component a.home {
     font-size: 30px;
     font-weight: bold;
 }
 
-.header a:hover {
+.header-component a:hover {
     color: rgba(255, 255, 255, 0.466);
 }
 
@@ -62,7 +57,7 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-  .header a {
+  .header-component a {
         float: none;
         display: block;
         text-align: left;
