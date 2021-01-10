@@ -1,3 +1,5 @@
+import { postNewTopic } from "../../../backend/controllers/topicController";
+
 export const topicStore = {
 
     state: {
@@ -34,6 +36,17 @@ export const topicStore = {
             topic = await topic.json();
             console.log(`Topic ${topicId}`, topic);
             commit("setTopic", topic);
+        },
+
+        async postNewTopic(topic) {
+            let newTopic = await fetch("/api/v1/topics", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(topic)
+            });
+            newTopic = await newTopic.json();
         }
     }
 }
