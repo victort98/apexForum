@@ -31,8 +31,6 @@ export default {
                 { text: 'Pro Discussion', value: 2 },
                 { text: 'Tournaments', value: 3 },
             ],
-            locked: false,
-            created_at: Date.now(),
             content: "",
         }
     },
@@ -43,8 +41,6 @@ export default {
             let topic = {
                 title: this.title,
                 categoryId: this.categoryId,
-                locked: this.locked,
-                created_at: this.created_at,
                 content: this.content,
                 userId: this.userId
             };
