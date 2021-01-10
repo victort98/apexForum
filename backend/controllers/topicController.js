@@ -11,7 +11,7 @@ const getAllTopics = (req, res) => {
 
 const getTopicByTopicId = (req, res) => {
     let query = db.prepare(`
-        SELECT * FROM topics WHERE categoryId = $categoryId AND id = $topicId
+        SELECT * FROM topics WHERE id = $topicId
     `);
 
     res.json(query.get(req.params));

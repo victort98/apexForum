@@ -30,7 +30,7 @@ export const topicStore = {
         },
 
         async fetchAllTopicsByTopicId({ commit }, topicId) {
-            let topic = await fetch(`/api/v1/topics/${topicId}`);
+            let topic = await fetch(`/api/v1/topics/:categoryId/${topicId}`);
             topic = await topic.json();
             console.log(`Topic ${topicId}`, topic);
             commit("setTopic", topic);

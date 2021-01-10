@@ -1,22 +1,17 @@
 <template>
     <div class="topic">
         <div class="topic-content">
-            <topic-list-content
-            v-for="topic in tests"
-            :key="topic.id"
-            :topic="topic"
-            />
+            {{ topic.title }}
+            <br>
+            {{ topic.content }}
+            <br>
+            {{ topic.created_at }}
         </div>
     </div>
 </template>
 
 <script>
-import TopicListContent from './TopicListContent'
 export default {
-
-    components: {
-        TopicListContent
-    },
 
     methods: {
         async topics() {
@@ -26,18 +21,12 @@ export default {
     },
 
     created() {
-        this.topics()
-        let topics = this.$store.state.topicStore.topic
-        console.log("what is this", topics)
-        let test = this.$store.dispatch("fetchAllTopicsByTopicId")
-        console.log("this", test)
-        
+        this.topics()   
     },
 
     computed: {
-        tests() {
-            let topicId = this.$route.params.topicId
-            return this.$store.getters["getTopicById"](topicId)
+        topic() {
+            return this.$store.state.topicStore.topic
         }
     }
 }
