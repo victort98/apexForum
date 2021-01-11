@@ -28,11 +28,31 @@ export const userStore = {
             return user;
         },
 
-        async logout({ commit }) {
-            let res = await fetch("/api/v1/auth/logout");
+        async createNewAccount(x, account) {
+            console.log("this", account)
+            let newAccount = await fetch("/api/v1/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(account)
+            });
+            newAccount = await newAccount.json();
+            return newAccount;
+        },
+
+        async logout({ commit }, user) {
+            let res = await fetch("/api/v1/auth/logout", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
             res = await res.json();
-            console.log("logged out", res);
-            commit("setIsLoggedIn", null);
+            console.log("User-logout: ", res)
+            commit("setIsLoggedIn", res)
+            return res;
         },
 
         async fetchCurrentUser({ commit }) {

@@ -6,6 +6,7 @@ import LoginPage from '../pages/Login'
 import TopicContent from '../components/homePage/TopicContent'
 import CreateNewTopic from '../pages/CreateNewTopic'
 import Comment from '../components/homePage/Comment'
+import CreateAccount from '../pages/CreateAccount'
 
 
 Vue.use(VueRouter)
@@ -42,6 +43,11 @@ const routes = [
         path: "/new-topic",
         name: "CreateNewTopic",
         component: CreateNewTopic
+    },
+    {
+        path: "/create-account",
+        name: "CreateAccount",
+        component: CreateAccount
     }
 
 ]
