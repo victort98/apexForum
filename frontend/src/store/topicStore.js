@@ -36,7 +36,8 @@ export const topicStore = {
             commit("setTopic", topic);
         },
 
-        async postNewTopic(topic) {
+        async postNewTopic(x, topic) {
+            console.log("this", topic)
             let newTopic = await fetch("/api/v1/topics", {
                 method: "POST",
                 headers: {
@@ -45,7 +46,7 @@ export const topicStore = {
                 body: JSON.stringify(topic)
             });
             newTopic = await newTopic.json();
-            return newTopic.lastInsertRowid;
+            return newTopic;
         }
     }
 }

@@ -4,14 +4,26 @@
   <a class="home" href="/">Apex Forum</a>
   <div class="header-right">
     <a href="/new-topic">Create topic</a>
-    <a v-if="user" href="/login">Login</a>
-    <a v-else href="/logout">logout</a>
+    <a v-if="isLoggedIn" href="/login">Login</a>
+    <a v-else @click="logout">logout</a>
   </div>
 </div>
 </template>
   
 <script>
 export default {
+  computed: {
+    isLoggedIn : function() {
+      console.log(this.$store.state.userStore.isLoggedIn)
+      return this.$store.getters.isLoggedIn
+    }
+  },
+
+  methods: {
+    logout() {
+      this.$store.dispatch("logout")
+    }
+  }
 }
 
 </script>

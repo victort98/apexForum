@@ -30,7 +30,7 @@ const getAllTopicsByCategoryId = (req, res) => {
 };
 
 const postNewTopic = (req, res) => {
-
+    req.body.locked = req.body.locked?1:0
     let query = db.prepare(`
         INSERT INTO topics (title, categoryId, locked, created_at, content, userId) VALUES ($title, $categoryId, $locked, $created_at, $content, $userId)
     `);

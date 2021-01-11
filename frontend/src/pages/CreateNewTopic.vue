@@ -27,7 +27,7 @@ export default {
             title: "",
             categoryId: 1,
             locked: false,
-            created_at: Date.now(),
+            created_at: (Math.round(+new Date()/1000)),
             options: [
                 { text: 'Game Updates', value: 1 },
                 { text: 'Pro Discussion', value: 2 },
@@ -38,10 +38,10 @@ export default {
         }
     },
 
-
     methods: {
         async createTopic() {
         let user = this.$store.state.userStore.isLoggedIn
+        console.log(user)
         if(!user){
             console.log("You need to create an account to create a topic")
         } else {

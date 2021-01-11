@@ -42,7 +42,8 @@ export default {
 
     created() {
         let user = this.$store.state.userStore.isLoggedIn
-        if(!user){
+        console.log(user)
+        if(user){
             this.$router.push("/");
         }
     }
