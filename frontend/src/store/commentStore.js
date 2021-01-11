@@ -10,10 +10,10 @@ export const commentStore = {
     },
 
     actions: {
-        async fetchCommentById({ commit }, commentId) {
-            let comments = await fetch(`/api/v1/comments/:categoryId/:topicId/${commentId}`);
+        async fetchCommentById({ commit }, topicId) {
+            let comments = await fetch(`/api/v1/comments/:categoryId/${topicId}`);
             comments = await comments.json();
-            console.log(`Comments ${commentId}`, comments);
+            console.log(`Comments ${topicId}`, comments);
             commit("setComments", comments);
         }
     }
