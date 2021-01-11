@@ -7,6 +7,7 @@ import TopicContent from '../components/homePage/TopicContent'
 import CreateNewTopic from '../pages/CreateNewTopic'
 import Comment from '../components/homePage/Comment'
 import CreateAccount from '../pages/CreateAccount'
+import store from '../store'
 
 
 Vue.use(VueRouter)
@@ -42,12 +43,15 @@ const routes = [
     {
         path: "/new-topic",
         name: "CreateNewTopic",
-        component: CreateNewTopic
+        component: CreateNewTopic,
+        meta: {
+            requresAuth: true
+        }
     },
     {
         path: "/create-account",
         name: "CreateAccount",
-        component: CreateAccount
+        component: CreateAccount,
     }
 
 ]
@@ -57,5 +61,17 @@ const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
 });
+
+router.beforeEach(async (to, from, next) => {
+    if(to.matched.some(record => record.meta.requresAuth)) {
+        if(!store.state.userStore.isLoggedIn) {
+            next({ name: 'LoginPage' })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+})
 
 export default router;

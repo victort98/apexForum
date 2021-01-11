@@ -4,7 +4,8 @@
   <a class="home" href="/">Apex Forum</a>
   <div class="header-right">
     <a href="/new-topic">Create topic</a>
-    <a v-if="isLoggedIn" href="/login">Login</a>
+    <a v-if="!this.$store.state.userStore.isLoggedIn" href="/create-account">Create Account</a>
+    <a v-if="!this.$store.state.userStore.isLoggedIn" href="/login">Login</a>
     <a v-else @click="logout">logout</a>
   </div>
 </div>
@@ -12,18 +13,16 @@
   
 <script>
 export default {
-  computed: {
-    isLoggedIn : function() {
-      console.log(this.$store.state.userStore.isLoggedIn)
-      return this.$store.getters.isLoggedIn
-    }
-  },
 
   methods: {
     logout() {
-      this.$store.dispatch("logout")
-    }
-  }
+      this.$store.dispatch("logout").then(() => {
+        this.$router.go()
+      })
+    },
+  },
+
+
 }
 
 </script>
@@ -53,6 +52,7 @@ body {
     text-decoration: none;
     font-size: 18px; 
     line-height: 25px;
+    cursor: pointer;
 }
 
 .header-component a.home {
@@ -73,6 +73,7 @@ body {
         float: none;
         display: block;
         text-align: left;
+        cursor: pointer;
   }
   
   .header-right {
