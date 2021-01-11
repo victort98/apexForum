@@ -9,13 +9,20 @@
             <br>
             {{ topic.created_at }}
             <br>
-            {{comment.message }}
+            <comment />
+
+            <div>{{ this.$store.state.commentStore.comments }}</div>
         </div>
     </div>
 </template>
 
 <script>
+import Comment from './Comment'
 export default {
+
+    components: {
+        Comment
+    },
 
     methods: {
         async topics() {
@@ -40,8 +47,8 @@ export default {
             console.log("first", this.$store.state.topicStore.topic)
             return this.$store.state.topicStore.topic;
         },
+
         comment() {
-            console.log("second", this.$store.state.commentStore.comments);
             return this.$store.state.commentStore.comments;
         }
     }

@@ -5,7 +5,7 @@ import CategoryList from '../components/homePage/CategoryList'
 import LoginPage from '../pages/Login'
 import TopicContent from '../components/homePage/TopicContent'
 import CreateNewTopic from '../pages/CreateNewTopic'
-import Comments from '../components/homePage/Comments'
+import Comment from '../components/homePage/Comment'
 
 
 Vue.use(VueRouter)
@@ -28,8 +28,8 @@ const routes = [
         },
         {
             path: "/:categoryId/:topicId",
-            name: "Comments",
-            component: Comments
+            name: "Comment",
+            component: Comment
         }
         ],
     },
