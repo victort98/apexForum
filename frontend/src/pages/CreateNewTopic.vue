@@ -44,6 +44,7 @@ export default {
         console.log(user)
         if(!user){
             console.log("You need to create an account to create a topic")
+            this.$router.push("/login")
         } else {
             let topic = {
                 title: this.title,
@@ -53,18 +54,12 @@ export default {
                 content: this.content,
                 userId: user.id
             };
-            this.$store.dispatch("postNewTopic", topic)
-            console.log(topic);
+            this.$store.dispatch("postNewTopic", topic);
+            this.$router.push("/");
         }
         },
     },
 
-    created() {
-        let user = this.$store.state.userStore.isLoggedIn
-        if(user){
-            this.$router.push("/");
-        }
-    }
 
 }
 </script>
