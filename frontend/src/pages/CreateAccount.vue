@@ -29,16 +29,22 @@ export default {
 
     methods: {
         async createAccount() {
-            let account = {
-                email: this.email,
-                username: this.username,
-                password: this.password,
-                userRole: this.userRole
-            };
-            this.$store.dispatch("createNewAccount", account)
-            console.log(account)
-            this.$router.push("/login")
+            let user = this.$store.state.userStore.isLoggedIn
+            if(user !== null){
+                alert("You are already logged in, logout to make a new account")
+                this.$router.push("/")
+            } else {
+                let account = {
+                    email: this.email,
+                    username: this.username,
+                    password: this.password,
+                    userRole: this.userRole
+                };
+                this.$store.dispatch("createNewAccount", account)
+                console.log(account)
+                this.$router.push("/login")
+            }
         }
-    }
+    },
 }
 </script>

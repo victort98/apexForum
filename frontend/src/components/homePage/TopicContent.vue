@@ -1,5 +1,6 @@
 <template>
     <div class="topic">
+        <button v-on:click="lockTopic" v-if="ifAdmin != false || ifModerator != false">Lock Topic</button>
         <div class="topic-content">
             {{ topic.title }}
             <br>
@@ -9,13 +10,13 @@
             <br>
             {{ topic.created_at }}
             <br>
+            <div v-if="locked == 0" class="reply">
+                <form class="reply" @submit.prevent="createReply">
+                    <textarea type="text" placeholder="reply..." v-model="message" required></textarea>
+                    <button class="reply-button">Reply</button>
+                </form>
+            </div>
             <comment />
-        </div>
-        <div class="reply">
-            <form class="reply" @submit.prevent="createReply">
-            <textarea type="text" placeholder="reply..." v-model="message" required></textarea>
-            <button class="reply-button">Reply</button>
-        </form>
         </div>
     </div>
 </template>
@@ -28,7 +29,8 @@ export default {
             message: "",
             userId: "",
             topicId: "",
-            created_at: (Math.round(+new Date()/1000))
+            created_at: (Math.round(+new Date()/1000)),
+            locked: ""
         }
     },
 
@@ -37,6 +39,15 @@ export default {
     },
 
     methods: {
+
+        async lockTopic() {
+            this.locked = 1;
+            let locked = {
+                locked: this.locked
+            }
+            this.$store.dispatch("updateTopic", locked)
+        },
+
         async topics() {
             let topicId = this.$route.params.topicId;
             this.$store.dispatch("fetchAllTopicsByTopicId", topicId);
@@ -67,7 +78,7 @@ export default {
                 console.log(reply);
             }
             this.message = "";
-        }
+        },
     },
 
     created() {
@@ -85,6 +96,16 @@ export default {
             let test = this.$store.state.commentStore.comments
             console.log("is this test?", test)
             return this.$store.state.commentStore.comments;
+        },
+
+        ifAdmin() {
+            let admin = this.$store.getters["getAdmin"]
+            return admin
+        },
+
+        ifModerator() {
+            let moderator = this.$store.getters["getModerator"]
+            return moderator
         }
     }
 }

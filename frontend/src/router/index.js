@@ -8,6 +8,7 @@ import CreateNewTopic from '../pages/CreateNewTopic'
 import Comment from '../components/homePage/Comment'
 import CreateAccount from '../pages/CreateAccount'
 import store from '../store/index'
+import User from '../pages/User'
 
 Vue.use(VueRouter)
 
@@ -25,19 +26,19 @@ const routes = [
         {
             path: "/:categoryId/:topicId",
             name: "TopicContent",
-            component: TopicContent
+            component: TopicContent,
         },
         {
             path: "/:categoryId/:topicId",
             name: "Comment",
-            component: Comment
+            component: Comment,
         }
         ],
     },
     {
         path: "/login",
         name: "LoginPage",
-        component: LoginPage
+        component: LoginPage,
     },
     {
         path: "/new-topic",
@@ -48,6 +49,11 @@ const routes = [
         path: "/create-account",
         name: "CreateAccount",
         component: CreateAccount,
+    },
+    {
+        path: "/users",
+        name: "User",
+        component: User,
     }
 
 ]

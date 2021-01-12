@@ -38,9 +38,20 @@ const postNewTopic = (req, res) => {
     res.json(query.run(req.body));
 };
 
+const updateTopic = (req, res) => {
+    req.body.id = req.params.id;
+
+    let query = db.prepare(`
+        UPDATE topics SET ${Object.keys(b).map(x => x + ' = $' + x)} WHERE id = $id
+    `)
+
+    res.json(query.run(req.body));
+}
+
 module.exports = {
     getAllTopics,
     getTopicByTopicId,
     getAllTopicsByCategoryId,
-    postNewTopic
+    postNewTopic,
+    updateTopic
 }

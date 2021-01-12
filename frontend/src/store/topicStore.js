@@ -47,6 +47,18 @@ export const topicStore = {
             });
             newTopic = await newTopic.json();
             return newTopic;
+        },
+
+        async updateTopic(x, locked) {
+            let topic = await fetch("/api/v1/topics", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(locked)
+            });
+            topic = await topic.json();
+            return topic;
         }
     }
 }

@@ -50,7 +50,7 @@ const updateAccount = (req, res) => {
 
 const deleteAccount = (req, res) => {
     let query = db.prepare(`
-        DELETE FROM users WHERE id = $id
+        DELETE FROM users WHERE id = $userId
     `);
     
     res.json(query.run(req.body));

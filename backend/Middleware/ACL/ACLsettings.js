@@ -2,13 +2,13 @@ module.exports = {
 
     restPrefix: '/api/',
     users(user, method, req) {
-      // Allow everyone to create a user if the userRole is basicUser
+      // Allow everyone to create a user if the userRole is user
       if (method === 'POST' && req.body.userRole === 'user') { return true; }
 
       // Allow admins to create a user with any role...
       if (method === 'POST' && user.userRole === 'admin') { return true;}
 
-      // Allow all logged in users to a see a list of other users
+      // Allow all logged in users to see a list of other users
       if (method === 'GET' && user.userRole) { return true; }
 
       // Allow admins to change info about a user
