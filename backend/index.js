@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 app.use(express.json());
+app.use(express.static('dist'));
 
 app.use((error, req, res, next) => {
   console.log("ERROR", error)
