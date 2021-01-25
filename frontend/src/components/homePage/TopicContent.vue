@@ -1,20 +1,19 @@
 <template>
-    <div class="topic">
+    <div class="topicInfo">
         <button v-on:click="lockTopic" v-if="ifAdmin != false || ifModerator != false">Lock Topic</button>
         <div class="topic-content">
-            {{ topic.title }}
-            <br>
-            {{ topic.content }}
-            <br>
-            {{ topic.username }}
-            <br>
-            {{ topic.created_at }}
+            <p class="title">{{ topic.title }}</p>
+            <p class="content">{{ topic.content }}</p>
+            <p class="usernameAndCreatedAt">Posted by: {{ topic.username }}</p>
+            <div>Published at {{ new Date(topic.created_at * 1000).toLocaleString() }}</div>
             <br>
             <div v-if="locked == 0" class="reply">
                 <form class="reply" @submit.prevent="createReply">
-                    <textarea type="text" placeholder="reply..." v-model="message" required></textarea>
+                    <textarea class="commentArea" type="text" placeholder="reply..." v-model="message" required></textarea>
+                    <br>
                     <button class="reply-button">Reply</button>
                 </form>
+                <br>
             </div>
             <comment />
         </div>
@@ -110,3 +109,26 @@ export default {
     }
 }
 </script>
+
+<style>
+.topicInfo {
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgba(61, 61, 61, 0.733);
+    padding: 10px;
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+
+.commentArea {
+    resize: none;
+    width: 20%;
+    height: 60px;
+}
+</style>

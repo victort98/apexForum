@@ -2,14 +2,17 @@
     <div class="account">
         <form class="newAccount" @submit.prevent="createAccount">
             <h1>Create New Account</h1>
-            <p>Email</p>
+            <div>Email</div>
             <input type="email" placeholder="Email" v-model="email" required/>
             <br>
-            <p>Username</p>
+            <br>
+            <div>Username</div>
             <input type="text" placeholder="Username" v-model="username" required />
             <br>
-            <p>Password</p>
+            <br>
+            <div>Password</div>
             <input type="password" placeholder="Password" v-model="password" required />
+            <br>
             <br>
             <button class="createNewAccount">Create Account</button>
         </form>
@@ -48,3 +51,17 @@ export default {
     },
 }
 </script>
+
+<style>
+.account {
+        margin: auto;
+    padding: 50px;
+    text-align: center;
+    width: 25%;
+    background: white;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+</style>

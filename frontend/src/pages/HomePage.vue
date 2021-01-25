@@ -13,7 +13,6 @@ export default {
 <style>
 .home-page {
   column-gap: 10px;
-  display: grid;
   grid-template-columns: 3fr 1fr;
   margin-top: 1rem;
 }

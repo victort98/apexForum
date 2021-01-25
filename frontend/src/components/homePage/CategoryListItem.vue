@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="category-list-item">
-        <p class="title">{{ category.title }}</p>
+        <p class="CategoryTitle">{{ category.title }}</p>
     </div>
     <div class="topics">
         <topic-list
@@ -30,3 +30,11 @@ export default {
     }
 }
 </script>
+
+<style>
+ .CategoryTitle {
+     font-weight: bold;
+     font-size: 25px;
+     margin-bottom: 10px;
+ }
+</style>

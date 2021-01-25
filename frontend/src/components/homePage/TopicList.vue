@@ -1,6 +1,6 @@
 <template>
   <div class="topic">
-    <router-link class="topic-name bold underline" :to="`${this.categoryId}/${this.topic.id}`">{{ topic.title }}</router-link>
+    <router-link class="topic-name" :to="`${this.categoryId}/${this.topic.id}`">{{ topic.title }}</router-link>
   </div>
 </template>
 
@@ -10,3 +10,9 @@ export default {
 
 }
 </script>
+
+<style>
+.topic {
+  margin-bottom: 4px;
+}
+</style>
