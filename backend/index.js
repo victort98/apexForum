@@ -43,4 +43,4 @@ app.use("/api/v1/users", userRoutes);
 app.use(ACL(ACLsettings));
 
 
-app.listen(7000, () => { console.log('Listening on port 3000') });
+app.listen(7000, () => { console.log('Listening on port 7000') });
